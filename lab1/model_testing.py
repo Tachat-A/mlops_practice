@@ -1,18 +1,19 @@
 import pandas as pd
 import pickle
+from sklearn.metrics import accuracy_score
 
+# загружаем данные
+test = pd.read_csv('test/data_scaled.csv')
 
-# Загрузка предобработанных тестовых данных из файла
-test_data = pd.read_csv('test_preprocessed/test_data_preprocessed.csv')
-
-# Загрузка модели из файла model.pkl
+# загружаем модель
 with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
+    clf = pickle.load(f)
 
-# Оценка модели на тестовых данных
-X_test = test_data[['temperature', 'humidity', 'pressure']]
-y_test = test_data['label']
-accuracy = model.score(X_test, y_test)
+# выделяем признаки и целевую переменную
+X_test, y_test = test.iloc[:, :-1], test.iloc[:, -1]
 
-# Вывод результатов тестирования
-print("Model test accuracy is:", accuracy)
+# предсказываем метки классов для тестовой выборки
+y_pred = clf.predict(X_test)
+
+# печатаем точность
+print(f"Model test accuracy is: {accuracy_score(y_test, y_pred)}")

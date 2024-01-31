@@ -1,32 +1,21 @@
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler
-import os
 
-# Загрузка данных обучающего и тестового
-# наборов из файлов CSV для анализа и обработки.
-train_data = pd.read_csv('train/train_data.csv')
-test_data = pd.read_csv('test/test_data.csv')
+# загружаем данные
+train = pd.read_csv('train/data.csv')
+test = pd.read_csv('test/data.csv')
 
-# Выполняем стандартизацию признаков
-# "temperature" (температура), "humidity" (влажность) и "pressure" (давление)
-# в обучающем и тестовом наборах данных.
 scaler = StandardScaler()
-train_data[['temperature', 'humidity', 'pressure']] = scaler.fit_transform(train_data[['temperature', 'humidity', 'pressure']])
-test_data[['temperature', 'humidity', 'pressure']] = scaler.transform(test_data[['temperature', 'humidity', 'pressure']])
 
-# Проверяем наличие двух директорий:
-# 'train_preprocessed' и 'test_preprocessed',
-# пчтобы сохранить предобработанные данные обучающего и тестового наборов.
-if not os.path.exists('train_preprocessed'):
-    os.makedirs('train_preprocessed')
-if not os.path.exists('test_preprocessed'):
-    os.makedirs('test_preprocessed')
+# выделяем признаки и целевую переменную
+X_train, y_train = train.iloc[:, :-1], train.iloc[:, -1].values.reshape(-1, 1)
+X_test, y_test = test.iloc[:, :-1], test.iloc[:, -1].values.reshape(-1, 1)
 
-# Сохраненяем предобработанные данные обучающего
-# и тестового наборов в формате CSV
-train_data.to_csv(
-    'train_preprocessed/train_data_preprocessed.csv', index=False
-    )
-test_data.to_csv(
-    'test_preprocessed/test_data_preprocessed.csv', index=False
-    )
+# обучаем трансформер и преобразуем данные
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# сохраняем обработанные данные
+pd.DataFrame(np.hstack((X_train, y_train))).to_csv('train/data_scaled.csv', index=False)
+pd.DataFrame(np.hstack((X_test, y_test))).to_csv('test/data_scaled.csv', index=False)
