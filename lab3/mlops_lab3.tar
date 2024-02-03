@@ -1,0 +1,3 @@
+Docker образ mlops_lab3.tar получился слишком большой (1,31 ГБ (1 410 261 504 байт)), чтобы быть загружен на GitHub.
+Поэтому мы загрузили его в хранилище артефактов dockerhub https://hub.docker.com/r/ig0rml/igor1
+https://hub.docker.com/layers/ig0rml/igor1/0.1/images/sha256-4ca08af39845d00386abe5755799f5a2950163590ac2c0ef8e0eb69acac81cee?context=explore

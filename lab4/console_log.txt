@@ -1,0 +1,573 @@
+    1  cat /etc/os-release
+    2  sudo su
+    3  sudo apt install openjdk-17-jre-headless --fix-missing
+    4  sudo apt install curl
+    5  wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo apt-key add -
+    6  sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+    7  sudo apt-get update
+    8  sudo apt-get install jenkins
+    9  sudo nano /etc/group
+   10  sudo service jenkins status
+   11  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   12  git
+   13  sudo apt install git
+   14  git init /var/lib/jenkins/workspace/jenkins_pipeline # timeout=10
+   15  sudo nano /etc/group
+   16  python3
+   17  pip -V
+   18  python
+   19  whoami
+   20  sudo apt-get remove docker docker-engine docker.io containerd runc
+   21  sudo uname -a
+   22  sudo apt-get update
+   23  sudo apt-get install ca-certificates curl gnupg lsb-releasesudo apt-get install ca-certificates curl gnupg lsb-release
+   24  sudo apt-get install ca-certificates curl gnupg lsb-release
+   25  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   26  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+   27  (lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   28  sudo apt-get update
+   29  sudo apt-get install docker-ce docker-ce-cli containerd.io
+   30  docker
+   31  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+   32  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   33  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   34  sudo apt-get update
+   35  sudo apt-get install docker-ce docker-ce-cli containerd.io
+   36  sudo usermod -aG docker $USER
+   37  docker version
+   38  sudo nano /etc/group
+   39  groups
+   40  sudo members docker
+   41  getent group docker
+   42  docker run hello-world
+   43  docker --version
+   44  docker info
+   45  docker stop hello-world
+   46  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   47  docker run hello-world
+   48  docker ps
+   49  cd lab3/
+   50  cd lab3
+   51  ls
+   52  nano dockerfile
+   53  ls
+   54  nano ml_web_app.py
+   55  ls
+   56  docker build -t mlops_lab3 .
+   57  docker run mlops_lab3
+   58  ls
+   59  docker ps
+   60  nano dockerfile
+   61  ls
+   62  nano requirements.txt
+   63  ls
+   64  docker build -t mlops_lab3 .
+   65  docker run mlops_lab3
+   66  docker stop mlops_lab3
+   67  docker ps -a
+   68  docker rm 97c97c21aabc
+   69  docker ps -a
+   70  docker rm 64e2f5674dad
+   71  docker ps -a
+   72  docker rm 09119f708a30
+   73  docker stop 09119f708a30
+   74  docker rm 09119f708a30
+   75  docker ps -a
+   76  cd lab3
+   77  ls
+   78  ifconfig
+   79  sudo service ssh status
+   80  sudo apt-get install openssh-server
+   81  sudo service ssh status
+   82  sudo nano /etc/ssh/sshd_config
+   83  sudo service ssh status
+   84  ipconfig
+   85  ifconfig
+   86  cd lab3
+   87  ls
+   88  ls -a
+   89  ls -l
+   90  docker build -t mlops_lab3 .
+   91  docker ps -a
+   92  docker build -t mlops_lab3 .
+   93  docker ps -a
+   94  docker run mlops_lab3
+   95  docker ps -a
+   96  sudo docker save -o mlops_lab3.tar mlops_lab3:v1
+   97  docker ps -a
+   98  docker stop mlops_lab3
+   99  docker stop bd007ebeeca4
+  100  docker ps -a
+  101  cd lab3
+  102  ls
+  103  cd
+  104  docker login
+  105  docker tag mlops_lab3 ig0rml/igor1:0.1
+  106  docker push mlops_lab3 ig0rml/igor1:0.1
+  107  docker push ig0rml/igor1:0.1
+  108  docker pull ig0rml/igor1
+  109  docker pull ig0rml/igor1:0.1
+  110  docker ps -a
+  111  sudo scp -i /path/to/root_ssh_key.pem -r root@192.168.194.130:/var/lib/docker/containers/ C:\ML\MLOps12345
+  112  sudo find / -name "root_ssh_key.pem" 2>/dev/null
+  113  sudo su
+  114  docker ps -a
+  115  docker save -o mlops_lab3.tar mlops_lab3:latest
+  116  docker ps -a
+  117  scp mlops_lab3.tar SpiderWeb@192.168.194.1:/C/ML/MLOps/
+  118  ping 192.168.194.1
+  119  ping 192.168.146.1
+  120  scp mlops_lab3.tar SpiderWeb@192.168.146.1:/C/ML/MLOps/
+  121  scp mlops_lab3.tar SpiderWeb@192.168.146.1:/C:/ML/MLOps/
+  122  pip install dvc
+  123  dvc --version
+  124  mkdir lab4 && cd lab4
+  125  git init
+  126  dvc init
+  127  sudo apt update
+  128  pip uninstall dvc
+  129  cd
+  130  pip freeze | grep dvc
+  131  pip install dvc
+  132  dvc --version
+  133  dvc -version
+  134  pip uninstall dvc
+  135  sudo apt install dvc
+  136  dvc -version
+  137  pip install dvc
+  138  sudo apt-get update
+  139  pip uninstall dvc
+  140  sudo apt install apt-transport-https dirmngr gnupg ca-certificates software-properties-common
+  141  sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 8B48AD6246925553
+  142  sudo add-apt-repository "deb https://dvc.org/deb stable main"
+  143  sudo apt-get update
+  144  sudo apt-get install dvc
+  145  sudo apt install python3-pip
+  146  pip install dvc
+  147  dvc --version
+  148  cd lab4
+  149  git init
+  150  dvc init
+  151  git status
+  152  dvc status
+  153  git commit -am "Init dvc"
+  154  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  155  git config --global user.email "izagalskiy@mail.ru"
+  156  git config --global user.name "Zagalskiy"
+  157  git commit -am "Init dvc"
+  158  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  159  dvc remote -f|--force add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  160  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore -f|--force
+  161  dvc remote add --default -f|--force myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  162  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  163  dvc remote modify myremote gdrive_acknowledge_abuse true
+  164  git status
+  165  dvc remote list
+  166  dvc status
+  167  git add .dvc/config
+  168  dvc status
+  169  git status
+  170  git commit -m "Google Drive storage added as remote"
+  171  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  172  dvc remote modify myremote gdrive_acknowledge_abuse true
+  173  dvc remote list
+  174  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP/dvcstore
+  175  dvc remote add --default -f myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  176  dvc remote modify myremote gdrive_acknowledge_abuse true
+  177  dvc remote list
+  178  git commit -m "Google Drive storage added as remote"
+  179  git status
+  180  dvc status
+  181  git add .dvc/confi
+  182  git add .dvc/config
+  183  git commit -m "Google Drive storage added as remote"
+  184  mkdir datasets
+  185  ls -la
+  186  nano data_creation.py
+  187  nano data_modification.py
+  188  nano data_creation.py
+  189  ls -la
+  190  python3 data_creation.py
+  191  pip install catboost
+  192  pip install pandas
+  193  python3 data_creation.py
+  194  python3 data_modification.py
+  195  ls -la
+  196  cd ./datasets
+  197  ls -la
+  198  head data.csv
+  199  head modofied_data.csv
+  200  head modified_data.csv
+  201  cd ./
+  202  cd
+  203  cd lab4
+  204  ls -la
+  205  ls -lh
+  206  ls -la
+  207  dvc add datasets
+  208  git add .gitignore datasets.dvc
+  209  git add datasets
+  210  git commit -m "Add new datasets.dvc"
+  211  git push origin master
+  212  git status
+  213  dvc status
+  214  git add .
+  215  git status
+  216  dvc status
+  217  git commit -m "Add py files"
+  218  git status
+  219  dvc status
+  220  git push origin master
+  221  dvc push
+  222  pip install dvc[gdrive]
+  223  dvc push
+  224  python3 data_modification1.py
+  225  dvc add datasets
+  226  git status
+  227  git add .
+  228  git commit -m "1st change in dataset"
+  229  dvc push
+  230  nano data_modification2.py
+  231  python3 data_modification2.py
+  232  dvc add datasets
+  233  git status
+  234  git add .
+  235  git commit -m "2nd change in dataset"
+  236  dvc push
+  237  nano data_modification3.py
+  238  python3 data_modification3.py
+  239  dvc add datasets
+  240  git status
+  241  git add .
+  242  git commit -m "3rd change in dataset"
+  243  dvc push
+  244  git log --online
+  245  git log --oneline
+  246  git checkout ad220fb
+  247  git log --oneline
+  248  dvc pull
+  249  git log --oneline
+  250  git checkout HEAD^1
+  251  git log --oneline
+  252  git checkout HEAD^1
+  253  git log --oneline
+  254  git checkout HEAD^1
+  255  git log --oneline
+  256  git checkout HEAD^1
+  257  git log --oneline
+  258  git checkout HEAD^1
+  259  git log --oneline
+  260  git checkout HEAD^1
+  261  git log --oneline
+  262  git checkout HEAD^1
+  263  dvc pull
+  264  git log --oneline
+  265  dvc pull -r myremote
+  266  git log --oneline
+  267  git checkout ba6cd17
+  268  git log --oneline
+  269  nano requirements.txt
+  270  pip freeze
+  271  nano requirements.txt
+  272  python3 -m pip install -r requirements.txt
+  273  rm -rf .git
+  274  ls -la
+  275  rm -rf .dvc
+  276  rm -rf .
+  277  rm -rf ..
+  278  ls -la
+  279  rm -rf .dvcignore
+  280  rm -rf .gitignore
+  281  ls -la
+  282  git clone https://github.com/Zagalskiy/mlops_practice.git
+  283  cd
+  284  git clone https://github.com/Zagalskiy/mlops_practice.git
+  285  dvc --version
+  286  cd mlops_practice/lab4
+  287  cd
+  288  dvc init
+  289  git status
+  290  dvc status
+  291  cd .
+  292  cd ..
+  293  rm -rf .
+  294  rm -rf .git
+  295  cd ..
+  296  git clone https://github.com/Zagalskiy/mlops_practice.git
+  297  dvc --version
+  298  cd mlops_practice/lab4
+  299  git init
+  300  dvc init
+  301  git status
+  302  dvc status
+  303  git commit -am "Init dvc"
+  304  rm -rf .git
+  305  cd ..
+  306  git clone https://github.com/Zagalskiy/mlops_practice.git
+  307  dvc --version
+  308  cd mlops_practice/lab4
+  309  git init
+  310  dvc init
+  311  git status
+  312  dvc status
+  313  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  314  dvc remote modify myremote gdrive_acknowledge_abuse true
+  315  pip install dvc[gdrive]
+  316  git status
+  317  dvc remote list
+  318  dvc status
+  319  git add .dvc/config
+  320  mkdir datasets
+  321  python3 -m pip install -r requirements.txt
+  322  python3 data_creation.py
+  323  python3 data_modification1.py
+  324  dvc add datasets
+  325  git add .gitignore datasets.dvc
+  326  git add .
+  327  git commit -m "Modify dataset 1"
+  328  dvc push
+  329  python3 data_modification2.py
+  330  dvc add datasets
+  331  git status
+  332  git add .
+  333  git commit -m "Modify dataset 2"
+  334  dvc push
+  335  python3 data_modification3.py
+  336  dvc add datasets
+  337  git add .
+  338  git commit -m "Modify dataset 3"
+  339  dvc push
+  340  git push origin testing
+  341  git remote -v
+  342  git push origin master
+  343  git remote -v
+  344  git status
+  345  cd
+  346  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  347  cd mlops_practice/lab4
+  348  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  349  git remote -v
+  350  git push origin testing
+  351  git branch
+  352  git push origin/testing master
+  353  git push origin master:testing
+  354  git credential-manager-core erase
+  355  git push origin master:testing
+  356  git pull origin master
+  357  git push origin master:testing
+  358  git push origin master
+  359  git pull origin master
+  360  git pull origin master --rebase
+  361  cd
+  362  git config --global user.email "izagalskiy@mail.ru"
+  363  git config --global user.name "Zagalskiy"
+  364  git clone https://github.com/Zagalskiy/mlops_practice.git
+  365  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  366  dvc --version
+  367  git init
+  368  mkdir repo && cd repo
+  369  git clone https://github.com/Zagalskiy/mlops_practice.git
+  370  git init
+  371  git config --global init.defaultBranch master
+  372  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  373  dvc init
+  374  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  375  dvc remote modify myremote gdrive_acknowledge_abuse true
+  376  pip install dvc[gdrive]
+  377  git status
+  378  dvc remote list
+  379  dvc status
+  380  git add .dvc/config
+  381  cd mlops_practice/lab4
+  382  mkdir datasets
+  383  python3 -m pip install -r requirements.txt
+  384  python3 data_creation.py
+  385  python3 data_modification1.py
+  386  dvc add datasets
+  387  git add .gitignore datasets.dvc
+  388  git add datasets/data.csv && git add datasets/data_mod1.csv
+  389  git commit -m "Modify dataset 1"
+  390  dvc push
+  391  python3 data_modification2.py
+  392  dvc add datasets
+  393  git add datasets/data_mod2.csv
+  394  git commit -m "Modify dataset 2"
+  395  dvc push
+  396  python3 data_modification3.py
+  397  dvc add datasets
+  398  git add datasets/data_mod3.csv
+  399  git commit -m "Modify dataset 3"
+  400  dvc push
+  401  git push origin master
+  402  git pull origin master --no-rebase
+  403  git push origin master
+  404  cd
+  405  mkdir repo && cd repo
+  406  git clone https://github.com/Zagalskiy/mlops_practice.git
+  407  git init
+  408  git config --global init.defaultBranch master
+  409  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  410  git pull origin master --no-rebase
+  411  dvc init
+  412  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  413  dvc remote modify myremote gdrive_acknowledge_abuse true
+  414  pip install dvc[gdrive]
+  415  git status
+  416  dvc remote list
+  417  dvc status
+  418  git add .dvc/config
+  419  cd mlops_practice/lab4
+  420  mkdir datasets
+  421  python3 -m pip install -r requirements.txt
+  422  python3 data_creation.py
+  423  python3 data_modification1.py
+  424  dvc add datasets
+  425  git add .gitignore datasets.dvc
+  426  git add datasets/data.csv && git add datasets/data_mod1.csv
+  427  git commit -m "Modify dataset 1"
+  428  dvc push
+  429  git push origin master
+  430  python3 data_modification2.py
+  431  cd
+  432  mkdir repo && cd repo
+  433  git clone https://github.com/Zagalskiy/mlops_practice.git
+  434  git init
+  435  git config --global init.defaultBranch master
+  436  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  437  ls -la
+  438  git pull origin master --no-rebase
+  439  cd
+  440  mkdir repo && cd repo
+  441  git clone https://github.com/Zagalskiy/mlops_practice.git
+  442  git init
+  443  git config --global init.defaultBranch master
+  444  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  445  dvc init
+  446  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  447  dvc remote modify myremote gdrive_acknowledge_abuse true
+  448  pip install dvc[gdrive]
+  449  git status
+  450  dvc status
+  451  git add .dvc/config
+  452  cd mlops_practice/lab4
+  453  mkdir datasets
+  454  python3 -m pip install -r requirements.txt
+  455  python3 data_creation.py
+  456  python3 data_modification1.py
+  457  dvc add datasets
+  458  git add .gitignore datasets.dvc
+  459  git add datasets/data.csv && git add datasets/data_mod1.csv
+  460  git commit -m "Modify dataset 1"
+  461  dvc push
+  462  git push origin master
+  463  python3 data_modification2.py
+  464  dvc add datasets
+  465  git add datasets/data_mod2.csv
+  466  git commit -m "Modify dataset 2"
+  467  dvc push
+  468  git push origin master
+  469  python3 data_modification3.py
+  470  dvc add datasets
+  471  git add datasets/data_mod2.csv
+  472  git add datasets/data_mod3.csv
+  473  git commit -m "Modify dataset 3"
+  474  dvc push
+  475  git push origin master
+  476  git log --oneline
+  477  cd mlops_practice/lab4
+  478  cd repo/mlops_practice/lab4
+  479  git add .
+  480  git status
+  481  cd
+  482  mkdir repo && cd repo
+  483  git config --global user.email "izagalskiy@mail.ru"
+  484  git config --global user.name "Zagalskiy"
+  485  git clone https://github.com/Zagalskiy/mlops_practice.git
+  486  git init
+  487  git config --global init.defaultBranch master
+  488  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  489  dvc init
+  490  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  491  dvc remote modify myremote gdrive_acknowledge_abuse true
+  492  pip install dvc[gdrive]
+  493  git status
+  494  dvc remote list
+  495  dvc status
+  496  git add .dvc/config
+  497  cd mlops_practice/lab4
+  498  mkdir datasets
+  499  python3 -m pip install -r requirements.txt
+  500  python3 data_creation.py
+  501  python3 data_modification1.py
+  502  dvc add datasets/
+  503  dvc cache remove
+  504  dvc gc
+  505  dvc gc -w
+  506  dvc add datasets/
+  507  git add .gitignore datasets.dvc
+  508  git add .
+  509  git commit -m "test"
+  510  dvc push
+  511  git push origin master
+  512  cd
+  513  mkdir repo && cd repo
+  514  git clone https://github.com/Zagalskiy/mlops_practice.git
+  515  git init
+  516  git config --global init.defaultBranch master
+  517  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  518  dvc init
+  519  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  520  dvc remote modify myremote gdrive_acknowledge_abuse true
+  521  pip install dvc[gdrive]
+  522  git status
+  523  dvc status
+  524  cd
+  525  mkdir repo && cd repo
+  526  git clone https://github.com/Zagalskiy/mlops_practice.git
+  527  git init
+  528  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  529  git config --global init.defaultBranch master
+  530  git remote add origin https://github.com/Zagalskiy/mlops_practice.git
+  531  dvc init
+  532  dvc remote add --default myremote gdrive://1n4ROEKVbB7OgWqjCohaSxuTMg65tTiSP
+  533  dvc remote modify myremote gdrive_acknowledge_abuse true
+  534  pip install dvc[gdrive]
+  535  git status
+  536  dvc status
+  537  git add .dvc/config
+  538  cd mlops_practice/lab4
+  539  mkdir datasets
+  540  python3 -m pip install -r requirements.txt
+  541  python3 data_creation.py
+  542  python3 data_modification1.py
+  543  dvc add datasets/
+  544  git add .gitignore datasets.dvc
+  545  git add .
+  546  git commit -m "Modify dataset 1"
+  547  git status
+  548  dvc status
+  549  dvc push
+  550  git push origin master
+  551  python3 data_modification2.py
+  552  dvc add datasets
+  553  git add .
+  554  git commit -m "Modify dataset 2"
+  555  dvc push
+  556  git push origin master
+  557  python3 data_modification3.py
+  558  dvc add datasets
+  559  git add .
+  560  git commit -m "Modify dataset 3"
+  561  dvc push
+  562  git push origin master
+  563  git log --oneline
+  564  git checkout HEAD^1
+  565  git log --oneline
+  566  git checkout c1fa53b
+  567  git log --oneline
+  568  git checkout d2c887a
+  569  git log --oneline
+  570  cd
+  571  command > console_log.txt
+  572  command >> console_log.txt
+  573  history > console_log.txt
